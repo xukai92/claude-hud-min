@@ -26,8 +26,28 @@ obvious clone, e.g. `~/src/claude-hud-min`). The entry point is
 command -v bun || command -v node
 ```
 
-Both run `src/index.js` as-is. If neither exists, stop and tell the user to
-install Node.js 18+ or Bun.
+Both run `src/index.js` as-is; prefer bun, which starts a little faster (~33ms
+against node's ~45ms on the author's machine — either is well inside the render
+budget). If neither exists, stop and tell the user to install Node.js 18+ or Bun.
+
+**Use the path `command -v` prints. Do not resolve it** with `realpath` or
+`readlink -f`. Resolving it is what breaks this setup later:
+
+| Setup | `command -v` gives | Resolved path |
+|---|---|---|
+| Nix | `/run/current-system/sw/bin/bun` | `/nix/store/<hash>-bun-1.3.13/bin/bun` — deleted by the next garbage collection after an upgrade |
+| mise / asdf | a shim under `~/.local/share/mise/shims` | a version-pinned install directory |
+| nvm | `~/.nvm/versions/node/v22.1.0/bin/node` | the same version-pinned path |
+
+The first column survives runtime upgrades; the second does not. If only a
+version-pinned path is available (nvm), use it and tell the user to re-run this
+command after upgrading their runtime.
+
+Sanity-check whatever you picked before building the command:
+
+```bash
+{RUNTIME} --version
+```
 
 ## Step 3: Build the command
 
@@ -57,7 +77,12 @@ Do not write settings if this errors.
 ## Step 5: Write settings
 
 Merge into `~/.claude/settings.json` (on Windows, `%USERPROFILE%\.claude\settings.json`),
-preserving every existing key:
+preserving every existing key.
+
+If `statusLine` is already set to something else — another HUD, a custom script
+— say what it points at and confirm before replacing it. Overwriting it is the
+one destructive thing this command does.
+
 
 ```json
 {
