@@ -1,0 +1,42 @@
+claude-hud-min
+Copyright (c) 2026 Kai Xu
+
+This product is a derivative work of:
+
+    claude-hud
+    https://github.com/jarrodwatts/claude-hud
+    Copyright (c) 2026 Jarrod Watts
+    Licensed under the MIT License
+
+claude-hud-min was written by cutting claude-hud down to its compact,
+single-line layout and dropping everything that layout never used. The code was
+largely rewritten — TypeScript to JSDoc-annotated JavaScript, with a different
+module split and usage cache — but the behavior it reproduces, and much of the
+logic behind that behavior, comes from claude-hud:
+
+  - src/stdin.js   The context percentage model: preferring Claude Code's
+                   native `used_percentage`, and the token-based fallback that
+                   scales a 16.5% autocompact reserve by raw usage. The
+                   constant and the scaling curve are claude-hud's, empirically
+                   derived there against `/context`.
+
+  - src/usage.js   The OAuth usage integration: the `/api/oauth/usage`
+                   endpoint and its `anthropic-beta: oauth-2025-04-20` header,
+                   the credential sources and their precedence, the macOS
+                   Keychain service-name scheme (including the hashed suffix
+                   for custom config directories), subscription-to-plan-name
+                   mapping, and the on-disk caching approach.
+
+  - src/colors.js  The palette and the threshold structure: context green /
+                   yellow / red at 70% and 85%, quota blue / magenta / red at
+                   75% and 90%, and the filled-and-dimmed block bar.
+
+  - src/render.js  The compact line itself — element order, separators,
+                   bracketing of the git segment, reset-time formatting, the
+                   80% floor on showing the 7-day quota, and the rule that the
+                   plan name moves next to the model when the usage section is
+                   absent.
+
+  - src/git.js     Which git facts are shown and what counts as dirty.
+
+The MIT License terms of claude-hud are carried forward in LICENSE.

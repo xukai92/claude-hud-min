@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 // claude-hud-min — one statusline row: model, context, project, git, plan usage.
+//
+// Derived from claude-hud (https://github.com/jarrodwatts/claude-hud),
+// Copyright (c) 2026 Jarrod Watts, MIT. See NOTICE.
 
 import { getGitStatus } from './git.js';
 import { renderLine } from './render.js';

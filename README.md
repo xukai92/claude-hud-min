@@ -4,6 +4,10 @@ A one-line statusline for [Claude Code](https://claude.com/claude-code): which
 model you are on, how full the context is, where you are, and how much of your
 plan's quota is left.
 
+Built on [claude-hud](https://github.com/jarrodwatts/claude-hud) by Jarrod
+Watts — this is that plugin cut down to its compact layout. See
+[NOTICE](NOTICE) for what is derived from it.
+
 ```
 Opus 5 (1M) ██░░░ 37% │ claude-hud-min (main*) │ Max █░░░░ 25% (1h 30m / 5h)
 └─ model ───┴ context ┘ └ project ─┴ branch ──┘ └ plan ┴ 5h quota ┴ resets in ┘
@@ -56,9 +60,11 @@ Requires Node.js 18+ or Bun. `bun` runs the same file and starts faster.
 
 ## Relation to claude-hud
 
-This is a stripped rewrite of [jarrodwatts/claude-hud](https://github.com/jarrodwatts/claude-hud),
+This is a stripped rewrite of [claude-hud](https://github.com/jarrodwatts/claude-hud)
 for people who only ever used its compact layout. Same data sources, same
-colors, about a tenth of the code.
+colors, same numbers, about a fifth of the code. All the hard-won parts — the
+context percentage model, the usage API handling, the thresholds — are its work;
+[NOTICE](NOTICE) records which.
 
 Deliberately dropped:
 
@@ -88,4 +94,8 @@ npm run demo    # render one line from a sample payload
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Derived from claude-hud, © Jarrod Watts, also MIT.
+MIT — see [LICENSE](LICENSE).
+
+A derivative work of [claude-hud](https://github.com/jarrodwatts/claude-hud),
+© 2026 Jarrod Watts, also MIT. Its copyright is carried in LICENSE and the
+derivation is itemized in [NOTICE](NOTICE).
