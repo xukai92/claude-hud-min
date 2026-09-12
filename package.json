@@ -1,0 +1,27 @@
+{
+  "name": "claude-hud-min",
+  "version": "0.1.0",
+  "description": "Minimal single-line statusline for Claude Code",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc",
+    "check": "npm run typecheck && npm test",
+    "demo": "echo '{\"model\":{\"display_name\":\"Opus 5 (1M context)\"},\"context_window\":{\"used_percentage\":45},\"cwd\":\"'$PWD'\"}' | node src/index.js"
+  },
+  "keywords": [
+    "claude-code",
+    "statusline",
+    "hud"
+  ],
+  "author": "Kai Xu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.0"
+  }
+}

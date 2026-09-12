@@ -1,0 +1,13 @@
+{
+  "name": "claude-hud-min",
+  "description": "Minimal single-line statusline for Claude Code: model, context, project, git branch, plan usage",
+  "version": "0.1.0",
+  "author": {
+    "name": "Kai Xu",
+    "url": "https://github.com/xukai92"
+  },
+  "homepage": "https://github.com/xukai92/claude-hud-min",
+  "repository": "https://github.com/xukai92/claude-hud-min",
+  "license": "MIT",
+  "keywords": ["statusline", "hud", "context", "usage", "minimal", "claude-code"]
+}

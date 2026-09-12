@@ -1,0 +1,20 @@
+{
+  "name": "claude-hud-min",
+  "owner": {
+    "name": "Kai Xu",
+    "url": "https://github.com/xukai92"
+  },
+  "metadata": {
+    "description": "Minimal single-line statusline for Claude Code",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "claude-hud-min",
+      "source": "./",
+      "description": "One statusline row: model, context bar, project, git branch, plan usage. No build step, no config.",
+      "category": "monitoring",
+      "tags": ["statusline", "hud", "context", "usage", "minimal"]
+    }
+  ]
+}
