@@ -27,10 +27,16 @@ src/
 ## Commands
 
 ```bash
+npm run setup   # typescript + @types/node — needs --include=dev, see below
 npm test        # node:test
 npm run check   # tsc --noEmit plus tests — run before committing
 npm run demo    # render one line from a sample payload
 ```
+
+`.npmrc` sets `omit=dev` so that the `npm install` the plugin installer runs in
+the plugin cache installs nothing: the package has no runtime dependencies and
+an installed copy should stay that way. Keep it that way — adding a runtime
+dependency means every installed version carries a `node_modules` tree.
 
 ## Things worth knowing
 

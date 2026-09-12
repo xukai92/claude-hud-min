@@ -86,11 +86,15 @@ and cross-process caching of the usage API.
 ## Development
 
 ```bash
-npm install     # only devDependencies: typescript + @types/node
+npm run setup   # typescript + @types/node, the only dependencies of any kind
 npm test        # node:test, no runner
 npm run check   # typecheck + tests
 npm run demo    # render one line from a sample payload
 ```
+
+`.npmrc` sets `omit=dev`, so the plain `npm install` the plugin installer runs
+inside the plugin cache pulls nothing — an installed copy is just the source.
+That is why the dev setup needs `--include=dev`, which `npm run setup` does.
 
 ## License
 

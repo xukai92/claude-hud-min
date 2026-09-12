@@ -5,6 +5,7 @@
   "type": "module",
   "main": "src/index.js",
   "scripts": {
+    "setup": "npm install --include=dev",
     "test": "node --test",
     "typecheck": "tsc",
     "check": "npm run typecheck && npm test",
